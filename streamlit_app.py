@@ -12,8 +12,9 @@ T = {
         "title": "🏠 LTV Checker",
         "subtitle": "Kom jij in aanmerking voor een **beter hypotheektarief**?",
         "intro": "Vul jouw gegevens in om te zien of de woningwaarde is gestegen en je in een lagere LTV-klasse valt.",
+        "woz_explainer": "📋 <strong>Stap 1 — Zoek eerst jouw WOZ-waarde op</strong><br>Weet je jouw WOZ-waarde niet? Dat is normaal! Ga naar <a href='https://www.wozwaardeloket.nl' target='_blank'><strong>wozwaardeloket.nl</strong></a>, typ jouw adres in en je ziet direct de officiële waarde van jouw woning. Geen account nodig, volledig gratis. Noteer dit bedrag en vul het hieronder in.",
         "woz_label": "🏡 WOZ-waarde (€)",
-        "woz_help": "Te vinden op MijnOverheid.nl of via jouw gemeente",
+        "woz_help": "Gratis opzoeken via wozwaardeloket.nl — typ gewoon jouw adres in",
         "bank_label": "🏦 Taxatiewaarde volgens bank (€)",
         "bank_help": "De waarde die jouw bank hanteerde bij het afsluiten van jouw hypotheek",
         "mortgage_label": "💳 Openstaande hypotheekschuld (€)",
@@ -37,15 +38,16 @@ T = {
         "savings_yearly": "Geschatte jaarlijkse besparing",
         "savings_note": "* Gebaseerd op een gemiddelde renteverlaging van ~0,25% per LTV-klasse. De werkelijke besparing hangt af van jouw specifieke hypotheekvorm en bank.",
         "steps_header": "📋 Volgende stappen",
+        "nhg_warning": "⚠️ **Belangrijk:** LTV-klassen beïnvloeden jouw rente **alleen als jouw hypotheek zónder NHG (Nationale Hypotheek Garantie) is afgesloten.** Heb je een NHG-hypotheek? Dan betaal je al het laagste, gegarandeerde tarief en heeft jouw LTV geen invloed op je rente.",
         "steps_improved": [
-            ("1️⃣", "Verzamel bewijs van de hogere woningwaarde", "Gebruik jouw WOZ-beschikking of vraag een nieuwe taxatie aan. De WOZ-waarde is gratis en wettelijk erkend."),
-            ("2️⃣", "Neem contact op met jouw hypotheekverstrekker", "Stuur een schriftelijk verzoek om LTV-herziening. Vermeld jouw hypotheeknummer en sluit bewijs bij."),
-            ("3️⃣", "Vraag om aanpassing van jouw rentetarief", "Banken zijn wettelijk verplicht jouw tarief te herzien als jouw LTV-klasse daalt — ook tijdens een lopende rentevaste periode."),
-            ("4️⃣", "Geen oversluiting nodig", "LTV-herziening is gratis en vereist geen nieuw contract. Gemiddelde doorlooptijd: 4–8 weken."),
+            ("1️⃣", "Zoek jouw WOZ-waarde op via WOZ Waardeloket", "De WOZ-waarde is de officiële waarde die de gemeente jaarlijks aan jouw woning toekent. Je kunt deze gratis en zonder inloggen opzoeken op wozwaardeloket.nl — typ gewoon jouw adres in. Je ziet dan de WOZ-waarde van jouw woning voor het huidige jaar. Houd dit bedrag bij de hand voor stap 2. 👉 wozwaardeloket.nl"),
+            ("2️⃣", "Vul de WOZ-waarde in bovenaan deze pagina", "Is de WOZ-waarde hoger dan het bedrag dat jouw bank destijds gebruikte? Dan daalt jouw LTV automatisch. Bereken het resultaat opnieuw als je de waarde hebt opgezocht."),
+            ("3️⃣", "Neem contact op met jouw hypotheekverstrekker", "Stuur een schriftelijk verzoek (e-mail of brief) om LTV-herziening. Vermeld jouw hypotheeknummer en voeg de WOZ-beschikking of een screenshot van WOZ Waardeloket bij als bewijs."),
+            ("4️⃣", "Vraag om aanpassing van jouw rentetarief", "Banken zijn wettelijk verplicht jouw tarief te herzien als jouw LTV-klasse daalt — ook tijdens een lopende rentevaste periode. Geen oversluiting nodig. Gemiddelde doorlooptijd: 4–8 weken."),
         ],
-        "steps_no_improvement": "Controleer jaarlijks jouw WOZ-waarde via **MijnOverheid.nl**. Naarmate jouw woning in waarde stijgt of jouw schuld daalt, kun je alsnog in aanmerking komen.",
-        "woz_link": "🔗 WOZ-waarde opzoeken op MijnOverheid.nl",
-        "footer": "ℹ️ Deze tool is puur informatief en vervangt geen professioneel hypotheekadvies. Raadpleeg altijd een erkend hypotheekadviseur.",
+        "steps_no_improvement": "Controleer jaarlijks jouw WOZ-waarde via **wozwaardeloket.nl** — helemaal gratis, geen account nodig. Naarmate jouw woning in waarde stijgt of jouw hypotheekschuld daalt, kun je alsnog in aanmerking komen voor een lagere LTV-klasse.",
+        "woz_link": "🔗 WOZ-waarde opzoeken op WOZ Waardeloket",
+        "footer": "ℹ️ Deze tool is puur informatief en vervangt geen professioneel hypotheekadvies. LTV-klassen zijn alleen relevant voor hypotheken zónder NHG. Raadpleeg altijd een erkend hypotheekadviseur.",
         "which_woz": "WOZ-waarde",
         "which_bank": "taxatiewaarde bank",
         "per_month": "/ maand",
@@ -55,8 +57,9 @@ T = {
         "title": "🏠 LTV Checker",
         "subtitle": "Are you entitled to a **better mortgage rate**?",
         "intro": "Enter your details to see whether your property value has risen and you now qualify for a lower LTV bracket — and a better rate.",
+        "woz_explainer": "📋 <strong>Step 1 — Look up your WOZ value first</strong><br>Not sure what your WOZ value is? That's totally normal! Go to <a href='https://www.wozwaardeloket.nl' target='_blank'><strong>wozwaardeloket.nl</strong></a>, type in your address, and you'll instantly see the official government-assessed value of your home. No account needed, completely free. Note the amount and enter it below.",
         "woz_label": "🏡 WOZ value / Municipal assessment (€)",
-        "woz_help": "Find this at MijnOverheid.nl or via your municipality",
+        "woz_help": "Look it up free at wozwaardeloket.nl — just type in your address",
         "bank_label": "🏦 Bank valuation (€)",
         "bank_help": "The value your bank used when you originally took out your mortgage",
         "mortgage_label": "💳 Outstanding mortgage balance (€)",
@@ -80,15 +83,16 @@ T = {
         "savings_yearly": "Estimated annual saving",
         "savings_note": "* Based on an average rate reduction of ~0.25% per LTV bracket. Actual savings depend on your specific mortgage type and lender.",
         "steps_header": "📋 Next steps",
+        "nhg_warning": "⚠️ **Important:** LTV brackets only affect your interest rate if your mortgage was taken out **without NHG (Nationale Hypotheek Garantie)**. If you have an NHG mortgage, you already benefit from the lowest guaranteed rate and your LTV does not influence your interest.",
         "steps_improved": [
-            ("1️⃣", "Gather proof of the higher property value", "Use your WOZ assessment letter or request a new valuation. The WOZ value is free and legally recognised by Dutch lenders."),
-            ("2️⃣", "Contact your mortgage lender", "Send a written request for an LTV review. Include your mortgage number and attach proof of the property value."),
-            ("3️⃣", "Request a rate adjustment", "Dutch lenders are legally required to revise your rate when your LTV bracket improves — even during a fixed-rate period."),
-            ("4️⃣", "No refinancing needed", "An LTV review is free and requires no new mortgage contract. Typical processing time: 4–8 weeks."),
+            ("1️⃣", "Look up your WOZ value at WOZ Waardeloket", "The WOZ value is the official property value that your municipality assigns to your home every year. You can look it up for free — no login required — at wozwaardeloket.nl. Just type in your address and you'll instantly see the current official value. Keep that number handy for the next step. 👉 wozwaardeloket.nl"),
+            ("2️⃣", "Enter the WOZ value at the top of this page", "Is the WOZ value higher than the figure your bank used? Then your LTV automatically drops. Recalculate after looking it up to see your updated result."),
+            ("3️⃣", "Contact your mortgage lender", "Send a written request (email or letter) for an LTV review. Include your mortgage number and attach the WOZ letter or a screenshot from WOZ Waardeloket as proof."),
+            ("4️⃣", "Request a rate adjustment", "Dutch lenders are legally required to revise your rate when your LTV bracket improves — even during a fixed-rate period. No refinancing needed. Typical processing time: 4–8 weeks."),
         ],
-        "steps_no_improvement": "Check your WOZ value annually at **MijnOverheid.nl**. As your property value rises or your balance decreases, you may still qualify in future.",
-        "woz_link": "🔗 Look up your WOZ value at MijnOverheid.nl",
-        "footer": "ℹ️ This tool is for informational purposes only and does not replace professional mortgage advice. Always consult a qualified mortgage advisor.",
+        "steps_no_improvement": "Check your WOZ value annually at **wozwaardeloket.nl** — completely free, no account needed. As your property value rises or your mortgage balance decreases, you may still qualify for a lower LTV bracket in future.",
+        "woz_link": "🔗 Look up your WOZ value at WOZ Waardeloket",
+        "footer": "ℹ️ This tool is for informational purposes only. LTV brackets are only relevant for mortgages without NHG. Always consult a qualified mortgage advisor.",
         "which_woz": "WOZ value",
         "which_bank": "bank valuation",
         "per_month": "/ month",
@@ -175,6 +179,13 @@ st.markdown(t["subtitle"])
 st.markdown(t["intro"])
 st.divider()
 
+# ─── WOZ explainer box ───────────────────────────────────────────────────────
+st.markdown(f"""
+<div style="background:#f0f9ff;border-left:4px solid #0ea5e9;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:0.92rem;color:#0c4a6e;">
+{t['woz_explainer']}
+</div>
+""", unsafe_allow_html=True)
+
 # ─── Inputs ──────────────────────────────────────────────────────────────────
 col1, col2 = st.columns(2)
 with col1:
@@ -210,6 +221,10 @@ if st.button(t["button"], use_container_width=True, type="primary"):
     color_new = get_color(ltv_new)
 
     st.markdown('<div class="result-box">', unsafe_allow_html=True)
+
+    # NHG warning
+    st.markdown(t["nhg_warning"])
+    st.markdown("")
 
     # Banner
     if improved:
@@ -297,6 +312,6 @@ if st.button(t["button"], use_container_width=True, type="primary"):
 
 # ─── WOZ link & footer ───────────────────────────────────────────────────────
 st.markdown("")
-st.markdown(f"[{t['woz_link']}](https://www.mijnoverheid.nl)")
+st.markdown(f"[{t['woz_link']}](https://www.wozwaardeloket.nl)")
 st.divider()
 st.caption(t["footer"])
