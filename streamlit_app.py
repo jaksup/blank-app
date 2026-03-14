@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="LTV Check | Beter Tarief?",
+    page_title="Betaal jij te veel hypotheekrente?",
     page_icon="🏠",
     layout="centered",
 )
@@ -9,94 +9,94 @@ st.set_page_config(
 # ─── Translations ────────────────────────────────────────────────────────────
 T = {
     "nl": {
-        "title": "🏠 LTV Checker",
-        "subtitle": "Kom jij in aanmerking voor een **beter hypotheektarief**?",
-        "intro": "Vul jouw gegevens in om te zien of de woningwaarde is gestegen en je in een lagere LTV-klasse valt.",
-        "woz_explainer": "📋 <strong>Stap 1 — Zoek eerst jouw WOZ-waarde op</strong><br>Weet je jouw WOZ-waarde niet? Dat is normaal! Ga naar <a href='https://www.wozwaardeloket.nl' target='_blank'><strong>wozwaardeloket.nl</strong></a>, typ jouw adres in en je ziet direct de officiële waarde van jouw woning. Geen account nodig, volledig gratis. Noteer dit bedrag en vul het hieronder in.",
-        "woz_label": "🏡 WOZ-waarde (€)",
-        "woz_help": "Gratis opzoeken via wozwaardeloket.nl — typ gewoon jouw adres in",
-        "bank_label": "🏦 Taxatiewaarde volgens bank (€)",
-        "bank_help": "De waarde die jouw bank hanteerde bij het afsluiten van jouw hypotheek",
-        "mortgage_label": "💳 Openstaande hypotheekschuld (€)",
-        "mortgage_help": "Het huidige resterende saldo van jouw hypotheek",
-        "rate_label": "📈 Huidig rentepercentage (%)",
-        "rate_help": "Jouw huidige hypotheekrente (bijv. 4.5)",
-        "button": "🔍 Bereken mijn LTV",
-        "old_situation": "Oude situatie",
-        "new_situation": "Nieuwe situatie",
-        "tier_header": "📊 LTV-klassen overzicht",
-        "tier_you": "← jij",
-        "col_ltv": "LTV",
-        "col_rate": "Tariefklasse",
-        "tier_labels": ["Beste tarief", "Zeer goed tarief", "Goed tarief", "Gemiddeld tarief", "Hoger tarief", "Maximaal tarief"],
-        "improved_msg": lambda old, new, val, which: f"✅ Goed nieuws! Je LTV daalde van **{old:.1f}%** → **{new:.1f}%** op basis van de **{which}** (€{val:,.0f}). Je valt nu in een **lagere tariefklasse**!",
-        "same_tier_msg": lambda old, new: f"ℹ️ Je LTV daalde van **{old:.1f}%** naar **{new:.1f}%**, maar je blijft in dezelfde tariefklasse.",
-        "no_change_msg": lambda new: f"⚠️ Je LTV is **{new:.1f}%** — geen significante verandering ten opzichte van de huidige waarde.",
-        "savings_header": "💰 Potentiële besparing",
-        "savings_rate_reduction": "Indicatieve renteverlaging",
-        "savings_monthly": "Geschatte maandelijkse besparing",
-        "savings_yearly": "Geschatte jaarlijkse besparing",
-        "savings_note": "* Gebaseerd op een gemiddelde renteverlaging van ~0,25% per LTV-klasse. De werkelijke besparing hangt af van jouw specifieke hypotheekvorm en bank.",
-        "steps_header": "📋 Volgende stappen",
-        "nhg_warning": "⚠️ **Belangrijk:** LTV-klassen beïnvloeden jouw rente **alleen als jouw hypotheek zónder NHG (Nationale Hypotheek Garantie) is afgesloten.** Heb je een NHG-hypotheek? Dan betaal je al het laagste, gegarandeerde tarief en heeft jouw LTV geen invloed op je rente.",
+        "title": "Betaal jij te veel hypotheekrente?",
+        "subtitle": "Als jouw woning meer waard is geworden, heb je mogelijk recht op een **lagere rente** — zonder over te sluiten.",
+        "intro": "Vul hieronder drie dingen in. We rekenen het voor je uit.",
+        "woz_explainer": "🏡 <strong>Eerst: zoek jouw WOZ-waarde op</strong> &nbsp;·&nbsp; <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#60a5fa;'>wozwaardeloket.nl →</a><br><span style='opacity:0.8;'>De WOZ-waarde is de officiële woningwaarde die de gemeente elk jaar vaststelt. Typ jouw adres in op wozwaardeloket.nl — geen account nodig, gratis, duurt 30 seconden. Noteer het bedrag en vul het hieronder in.</span>",
+        "woz_label": "WOZ-waarde (€)",
+        "woz_help": "Zoek het op via wozwaardeloket.nl — typ jouw adres in, klaar",
+        "bank_label": "Waarde die jouw bank gebruikte (€)",
+        "bank_help": "Dit staat in jouw hypotheekofferte of welkomstbrief van de bank. Het is het bedrag waartegen jouw hypotheek oorspronkelijk werd berekend.",
+        "mortgage_label": "Wat je nog aan hypotheek hebt openstaan (€)",
+        "mortgage_help": "Kijk op de website van jouw bank of in de jaarlijkse opgave. Het gaat om wat je nu nog moet terugbetalen.",
+        "rate_label": "Jouw huidige rente (%)",
+        "rate_help": "Je vindt dit op jouw bankafschrift of in Mijn Omgeving van jouw hypotheekverstrekker",
+        "button": "Bereken of ik in aanmerking kom",
+        "old_situation": "Situatie toen",
+        "new_situation": "Situatie nu",
+        "tier_header": "Hoe werkt het met die klassen?",
+        "tier_you": "← jij nu",
+        "col_ltv": "Woningwaarde vs. schuld",
+        "col_rate": "Wat dat betekent",
+        "tier_labels": ["Laagste rente mogelijk", "Zeer lage rente", "Lage rente", "Gemiddelde rente", "Hogere rente", "Hoogste rente"],
+        "improved_msg": lambda old, new, val, which: f"Goed nieuws — je valt in een betere categorie! Je schuld is nu {new:.1f}% van de woningwaarde (was {old:.1f}%). Op basis van de {which} van €{val:,.0f} heb je mogelijk recht op een lagere rente.",
+        "same_tier_msg": lambda old, new: f"Je verhouding is gedaald van {old:.1f}% naar {new:.1f}% — maar je valt nog net in dezelfde categorie. Controleer volgend jaar opnieuw.",
+        "no_change_msg": lambda new: f"Op dit moment valt je nog in dezelfde categorie ({new:.1f}%). Is jouw woning de afgelopen jaren in waarde gestegen? Controleer de actuele WOZ-waarde op wozwaardeloket.nl.",
+        "savings_header": "Wat kan je dit opleveren?",
+        "savings_rate_reduction": "Geschatte renteverlaging",
+        "savings_monthly": "Minder betalen per maand",
+        "savings_yearly": "Minder betalen per jaar",
+        "savings_note": "Indicatieve berekening op basis van ~0,25% renteverlaging per categorie. Je werkelijke voordeel hangt af van jouw bank en hypotheekvorm.",
+        "steps_header": "Wat kun je nu doen?",
+        "nhg_warning": "💡 **Heb je een hypotheek met NHG?** Dan geldt dit niet voor jou — bij NHG betaal je al het laagste tarief, ongeacht de woningwaarde. Twijfel je? Check het in jouw hypotheekpapieren of bel jouw bank.",
         "steps_improved": [
-            ("1️⃣", "Zoek jouw WOZ-waarde op via WOZ Waardeloket", "De WOZ-waarde is de officiële waarde die de gemeente jaarlijks aan jouw woning toekent. Je kunt deze gratis en zonder inloggen opzoeken op wozwaardeloket.nl — typ gewoon jouw adres in. Je ziet dan de WOZ-waarde van jouw woning voor het huidige jaar. Houd dit bedrag bij de hand voor stap 2. 👉 wozwaardeloket.nl"),
-            ("2️⃣", "Vul de WOZ-waarde in bovenaan deze pagina", "Is de WOZ-waarde hoger dan het bedrag dat jouw bank destijds gebruikte? Dan daalt jouw LTV automatisch. Bereken het resultaat opnieuw als je de waarde hebt opgezocht."),
-            ("3️⃣", "Neem contact op met jouw hypotheekverstrekker", "Stuur een schriftelijk verzoek (e-mail of brief) om LTV-herziening. Vermeld jouw hypotheeknummer en voeg de WOZ-beschikking of een screenshot van WOZ Waardeloket bij als bewijs."),
-            ("4️⃣", "Vraag om aanpassing van jouw rentetarief", "Banken zijn wettelijk verplicht jouw tarief te herzien als jouw LTV-klasse daalt — ook tijdens een lopende rentevaste periode. Geen oversluiting nodig. Gemiddelde doorlooptijd: 4–8 weken."),
+            ("Stap 1", "Zoek jouw WOZ-waarde op", "Ga naar <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#3b82f6;'>wozwaardeloket.nl</a>, typ jouw adres in en noteer de waarde. Geen account nodig, kost 30 seconden."),
+            ("Stap 2", "Stuur een berichtje naar jouw bank", "Neem contact op via de app, e-mail of telefoon. Zeg dat je een LTV-herziening wilt aanvragen en stuur een screenshot van WOZ Waardeloket mee als bewijs. Je hoeft geen advocaat in te schakelen — een gewone mail is genoeg."),
+            ("Stap 3", "De bank past jouw rente aan", "Banken zijn wettelijk verplicht dit te doen als je in een lagere categorie valt — ook als je nog midden in een rentevaste periode zit. Gemiddeld duurt het 4 tot 8 weken."),
+            ("Stap 4", "Geen oversluiting, geen kosten", "Je sluit geen nieuwe hypotheek af. Er zijn geen notariskosten. Het is gewoon een aanpassing van jouw bestaande rente."),
         ],
-        "steps_no_improvement": "Controleer jaarlijks jouw WOZ-waarde via **wozwaardeloket.nl** — helemaal gratis, geen account nodig. Naarmate jouw woning in waarde stijgt of jouw hypotheekschuld daalt, kun je alsnog in aanmerking komen voor een lagere LTV-klasse.",
-        "woz_link": "🔗 WOZ-waarde opzoeken op WOZ Waardeloket",
-        "footer": "ℹ️ Deze tool is puur informatief en vervangt geen professioneel hypotheekadvies. LTV-klassen zijn alleen relevant voor hypotheken zónder NHG. Raadpleeg altijd een erkend hypotheekadviseur.",
+        "steps_no_improvement": "Woningen zijn de afgelopen jaren flink in waarde gestegen. Controleer jaarlijks jouw WOZ-waarde op <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#3b82f6;'>wozwaardeloket.nl</a> — het kost 30 seconden en is gratis. Zodra je in een lagere categorie valt, kun je direct actie ondernemen.",
+        "woz_link": "WOZ-waarde opzoeken → wozwaardeloket.nl",
+        "footer": "Deze tool geeft een indicatie en vervangt geen hypotheekadvies. Het voordeel van een lagere rente geldt alleen voor hypotheken zónder NHG.",
         "which_woz": "WOZ-waarde",
-        "which_bank": "taxatiewaarde bank",
-        "per_month": "/ maand",
-        "per_year": "/ jaar",
+        "which_bank": "bankwaarde",
+        "per_month": "per maand",
+        "per_year": "per jaar",
     },
     "en": {
-        "title": "🏠 LTV Checker",
-        "subtitle": "Are you entitled to a **better mortgage rate**?",
-        "intro": "Enter your details to see whether your property value has risen and you now qualify for a lower LTV bracket — and a better rate.",
-        "woz_explainer": "📋 <strong>Step 1 — Look up your WOZ value first</strong><br>Not sure what your WOZ value is? That's totally normal! Go to <a href='https://www.wozwaardeloket.nl' target='_blank'><strong>wozwaardeloket.nl</strong></a>, type in your address, and you'll instantly see the official government-assessed value of your home. No account needed, completely free. Note the amount and enter it below.",
-        "woz_label": "🏡 WOZ value / Municipal assessment (€)",
-        "woz_help": "Look it up free at wozwaardeloket.nl — just type in your address",
-        "bank_label": "🏦 Bank valuation (€)",
-        "bank_help": "The value your bank used when you originally took out your mortgage",
-        "mortgage_label": "💳 Outstanding mortgage balance (€)",
-        "mortgage_help": "The current remaining balance on your mortgage",
-        "rate_label": "📈 Current interest rate (%)",
-        "rate_help": "Your current mortgage interest rate (e.g. 4.5)",
-        "button": "🔍 Calculate my LTV",
-        "old_situation": "Old situation",
-        "new_situation": "New situation",
-        "tier_header": "📊 LTV bracket overview",
-        "tier_you": "← you",
-        "col_ltv": "LTV",
-        "col_rate": "Rate tier",
-        "tier_labels": ["Best rate", "Very good rate", "Good rate", "Average rate", "Higher rate", "Maximum rate"],
-        "improved_msg": lambda old, new, val, which: f"✅ Great news! Your LTV dropped from **{old:.1f}%** → **{new:.1f}%** based on the **{which}** (€{val:,.0f}). You now qualify for a **lower rate bracket**!",
-        "same_tier_msg": lambda old, new: f"ℹ️ Your LTV dropped from **{old:.1f}%** to **{new:.1f}%**, but you remain in the same rate bracket.",
-        "no_change_msg": lambda new: f"⚠️ Your LTV is **{new:.1f}%** — no significant change compared to the current bank valuation.",
-        "savings_header": "💰 Potential savings",
-        "savings_rate_reduction": "Indicative rate reduction",
-        "savings_monthly": "Estimated monthly saving",
-        "savings_yearly": "Estimated annual saving",
-        "savings_note": "* Based on an average rate reduction of ~0.25% per LTV bracket. Actual savings depend on your specific mortgage type and lender.",
-        "steps_header": "📋 Next steps",
-        "nhg_warning": "⚠️ **Important:** LTV brackets only affect your interest rate if your mortgage was taken out **without NHG (Nationale Hypotheek Garantie)**. If you have an NHG mortgage, you already benefit from the lowest guaranteed rate and your LTV does not influence your interest.",
+        "title": "Are you overpaying on your mortgage?",
+        "subtitle": "If your home has gone up in value, you may be entitled to a **lower interest rate** — no refinancing needed.",
+        "intro": "Fill in three things below. We'll do the math.",
+        "woz_explainer": "🏡 <strong>First: look up your WOZ value</strong> &nbsp;·&nbsp; <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#60a5fa;'>wozwaardeloket.nl →</a><br><span style='opacity:0.8;'>The WOZ value is the official property value set by your municipality each year. Go to wozwaardeloket.nl, type in your address — no account needed, free, takes 30 seconds. Note the amount and enter it below.</span>",
+        "woz_label": "WOZ value (€)",
+        "woz_help": "Look it up at wozwaardeloket.nl — type your address, done",
+        "bank_label": "Value your bank used (€)",
+        "bank_help": "This is in your original mortgage offer or welcome letter from the bank — the figure they used to calculate your mortgage.",
+        "mortgage_label": "How much mortgage you still owe (€)",
+        "mortgage_help": "Check your bank's app or your annual mortgage statement. It's what you still need to pay back.",
+        "rate_label": "Your current interest rate (%)",
+        "rate_help": "You'll find this on your bank statement or in your mortgage portal",
+        "button": "Check if I qualify",
+        "old_situation": "Back then",
+        "new_situation": "Right now",
+        "tier_header": "How do the brackets work?",
+        "tier_you": "← you now",
+        "col_ltv": "Home value vs. debt",
+        "col_rate": "What that means",
+        "tier_labels": ["Lowest rate possible", "Very low rate", "Low rate", "Average rate", "Higher rate", "Highest rate"],
+        "improved_msg": lambda old, new, val, which: f"Good news — you've moved to a better bracket! Your debt is now {new:.1f}% of your home's value (was {old:.1f}%). Based on a {which} of €{val:,.0f}, you may be entitled to a lower rate.",
+        "same_tier_msg": lambda old, new: f"Your ratio dropped from {old:.1f}% to {new:.1f}% — but you're still just within the same bracket. Check again next year.",
+        "no_change_msg": lambda new: f"You're currently in the same bracket ({new:.1f}%). Has your home gone up in value recently? Check the latest WOZ value at wozwaardeloket.nl.",
+        "savings_header": "What could this save you?",
+        "savings_rate_reduction": "Estimated rate reduction",
+        "savings_monthly": "Less to pay each month",
+        "savings_yearly": "Less to pay each year",
+        "savings_note": "Indicative estimate based on ~0.25% rate reduction per bracket. Your actual saving depends on your lender and mortgage type.",
+        "steps_header": "What can you do now?",
+        "nhg_warning": "💡 **Do you have an NHG mortgage?** Then this doesn't apply to you — with NHG you already pay the lowest rate regardless of your home's value. Not sure? Check your mortgage paperwork or call your bank.",
         "steps_improved": [
-            ("1️⃣", "Look up your WOZ value at WOZ Waardeloket", "The WOZ value is the official property value that your municipality assigns to your home every year. You can look it up for free — no login required — at wozwaardeloket.nl. Just type in your address and you'll instantly see the current official value. Keep that number handy for the next step. 👉 wozwaardeloket.nl"),
-            ("2️⃣", "Enter the WOZ value at the top of this page", "Is the WOZ value higher than the figure your bank used? Then your LTV automatically drops. Recalculate after looking it up to see your updated result."),
-            ("3️⃣", "Contact your mortgage lender", "Send a written request (email or letter) for an LTV review. Include your mortgage number and attach the WOZ letter or a screenshot from WOZ Waardeloket as proof."),
-            ("4️⃣", "Request a rate adjustment", "Dutch lenders are legally required to revise your rate when your LTV bracket improves — even during a fixed-rate period. No refinancing needed. Typical processing time: 4–8 weeks."),
+            ("Step 1", "Look up your WOZ value", "Go to <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#3b82f6;'>wozwaardeloket.nl</a>, type in your address and note the value. No account needed, takes 30 seconds."),
+            ("Step 2", "Send a quick message to your bank", "Contact them via their app, email or phone. Tell them you'd like to request an LTV review and attach a screenshot from WOZ Waardeloket as proof. You don't need a lawyer — a simple email is enough."),
+            ("Step 3", "Your bank adjusts your rate", "Dutch banks are legally required to do this when you move to a lower bracket — even if you're in the middle of a fixed-rate period. It typically takes 4 to 8 weeks."),
+            ("Step 4", "No refinancing, no fees", "You're not taking out a new mortgage. No notary costs. It's simply an adjustment to your existing rate."),
         ],
-        "steps_no_improvement": "Check your WOZ value annually at **wozwaardeloket.nl** — completely free, no account needed. As your property value rises or your mortgage balance decreases, you may still qualify for a lower LTV bracket in future.",
-        "woz_link": "🔗 Look up your WOZ value at WOZ Waardeloket",
-        "footer": "ℹ️ This tool is for informational purposes only. LTV brackets are only relevant for mortgages without NHG. Always consult a qualified mortgage advisor.",
+        "steps_no_improvement": "Home values in the Netherlands have risen significantly in recent years. Check your WOZ value annually at <a href='https://www.wozwaardeloket.nl' target='_blank' style='color:#3b82f6;'>wozwaardeloket.nl</a> — it's free and takes 30 seconds. Once you drop into a lower bracket, you can act right away.",
+        "woz_link": "Look up your WOZ value → wozwaardeloket.nl",
+        "footer": "This tool gives an indication and is not mortgage advice. The rate benefit only applies to mortgages without NHG.",
         "which_woz": "WOZ value",
         "which_bank": "bank valuation",
-        "per_month": "/ month",
-        "per_year": "/ year",
+        "per_month": "per month",
+        "per_year": "per year",
     }
 }
 
@@ -117,52 +117,220 @@ def get_color(ltv: float) -> str:
 # ─── CSS ─────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
-h1,h2,h3 { font-family: 'Playfair Display', serif; }
-.stApp { background: linear-gradient(145deg, #f0f4f8 0%, #e3ecf7 100%); }
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+    color: #e2e8f0;
+}
 
-.result-box {
-    background: white;
-    border-radius: 20px;
+/* Dark background for entire app */
+.stApp {
+    background-color: #0f1117;
+}
+
+/* Hide default streamlit header padding */
+.block-container {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+    max-width: 680px;
+}
+
+/* Main title */
+h1, h2, h3 {
+    color: #f8fafc !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em;
+}
+
+/* All text defaults */
+p, label, span, div {
+    color: #cbd5e1;
+}
+
+/* Input fields */
+.stNumberInput input {
+    background-color: #1e2130 !important;
+    border: 1px solid #2d3548 !important;
+    border-radius: 8px !important;
+    color: #f1f5f9 !important;
+    font-size: 1rem !important;
+    padding: 0.6rem 0.75rem !important;
+}
+.stNumberInput input:focus {
+    border-color: #4f8ef7 !important;
+    box-shadow: 0 0 0 2px rgba(79,142,247,0.2) !important;
+}
+
+/* Input labels */
+.stNumberInput label {
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+/* Selectbox (language toggle) */
+.stSelectbox > div > div {
+    background-color: #1e2130 !important;
+    border: 1px solid #2d3548 !important;
+    border-radius: 8px !important;
+    color: #f1f5f9 !important;
+}
+
+/* Primary button */
+.stButton > button[kind="primary"] {
+    background: #4f8ef7 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 0.75rem 1.5rem !important;
+    letter-spacing: -0.01em;
+    transition: background 0.15s;
+}
+.stButton > button[kind="primary"]:hover {
+    background: #3b7de8 !important;
+}
+
+/* Divider */
+hr { border-color: #1e2130 !important; }
+
+/* Caption / footer */
+.stCaption { color: #475569 !important; font-size: 0.78rem !important; }
+
+/* Result card */
+.result-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3548;
+    border-radius: 16px;
     padding: 2rem 2.25rem;
-    box-shadow: 0 6px 32px rgba(0,0,0,0.09);
     margin-top: 1.5rem;
 }
-.ltv-badge {
-    font-size: 2.8rem;
-    font-weight: 900;
-    font-family: 'Playfair Display', serif;
-    line-height: 1.1;
+
+/* LTV big number */
+.ltv-number {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
 }
-.good    { color: #16a34a; }
-.neutral { color: #d97706; }
-.bad     { color: #dc2626; }
+.good    { color: #34d399; }
+.neutral { color: #fbbf24; }
+.bad     { color: #f87171; }
 
-.tier-table { width:100%; border-collapse:collapse; margin-top:0.75rem; border-radius:10px; overflow:hidden; }
-.tier-table th { background:#1e3a5f; color:white; padding:10px 14px; text-align:left; font-weight:500; font-size:0.9rem; }
-.tier-table td { padding:9px 14px; border-bottom:1px solid #f0f0f0; font-size:0.92rem; }
-.tier-table tr.highlight { background:#dcfce7 !important; font-weight:600; }
-.tier-table tr:nth-child(even) { background:#f9fafb; }
-
-.savings-box {
-    background: linear-gradient(135deg,#ecfdf5,#d1fae5);
-    border: 1.5px solid #6ee7b7;
-    border-radius: 14px;
-    padding: 1.25rem 1.5rem;
-    margin-top: 1.25rem;
+.ltv-label {
+    font-size: 0.82rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+    font-weight: 500;
 }
-.savings-row { display:flex; justify-content:space-between; align-items:center; padding:0.4rem 0; border-bottom:1px solid #a7f3d0; }
-.savings-row:last-child { border-bottom:none; font-weight:600; font-size:1.05rem; }
-.savings-label { color:#065f46; }
-.savings-value { color:#047857; font-weight:600; }
+.ltv-sublabel {
+    font-size: 0.88rem;
+    color: #64748b;
+    margin-top: 4px;
+}
 
-.step-card { background:#eff6ff; border-left:4px solid #3b82f6; border-radius:10px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
-.step-title { font-weight:600; font-size:0.97rem; color:#1e3a5f; margin-bottom:0.25rem; }
-.step-body  { font-size:0.9rem; color:#374151; line-height:1.5; }
+/* Result banner */
+.banner-good    { background:#052e16; border:1px solid #166534; border-radius:10px; padding:1rem 1.25rem; color:#86efac; font-size:0.95rem; margin-bottom:1.25rem; }
+.banner-info    { background:#0c1a2e; border:1px solid #1e40af; border-radius:10px; padding:1rem 1.25rem; color:#93c5fd; font-size:0.95rem; margin-bottom:1.25rem; }
+.banner-warn    { background:#1c1400; border:1px solid #854d0e; border-radius:10px; padding:1rem 1.25rem; color:#fde68a; font-size:0.95rem; margin-bottom:1.25rem; }
+.banner-nhg     { background:#1a1a2e; border:1px solid #4338ca; border-radius:10px; padding:0.9rem 1.25rem; color:#a5b4fc; font-size:0.88rem; margin-bottom:1.25rem; }
 
-.tip-box { background:#fefce8; border-left:4px solid #eab308; border-radius:10px; padding:1rem 1.25rem; margin-top:1.25rem; font-size:0.92rem; color:#713f12; }
+/* Section label inside card */
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #475569;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem;
+}
+
+/* Tier table */
+.tier-table { width:100%; border-collapse:collapse; margin-top:0.5rem; }
+.tier-table th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #475569;
+    font-weight: 600;
+    padding: 0 0.75rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #2d3548;
+}
+.tier-table td { padding:0.6rem 0.75rem; border-bottom:1px solid #1e2535; font-size:0.9rem; color:#94a3b8; }
+.tier-table tr.hl td { background:#0d2818; color:#86efac; font-weight:600; }
+.tier-table tr.hl td:first-child { border-left: 3px solid #34d399; }
+
+/* Savings */
+.savings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.savings-cell {
+    background: #0d2818;
+    border: 1px solid #166534;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+}
+.savings-cell .val { font-size:1.4rem; font-weight:700; color:#34d399; letter-spacing:-0.02em; }
+.savings-cell .lbl { font-size:0.72rem; color:#4ade80; margin-top:4px; text-transform:uppercase; letter-spacing:0.05em; }
+
+/* Step cards */
+.step-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3548;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+.step-num {
+    background: #2d3548;
+    color: #94a3b8;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    margin-top: 2px;
+    text-transform: uppercase;
+}
+.step-title { font-weight: 600; font-size: 0.92rem; color: #e2e8f0; margin-bottom: 3px; }
+.step-body  { font-size: 0.86rem; color: #64748b; line-height: 1.55; }
+.step-body a { color: #4f8ef7; text-decoration: none; }
+
+/* WOZ explainer */
+.woz-box {
+    background: #131926;
+    border: 1px solid #2d3548;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #94a3b8;
+}
+.woz-box a { color: #60a5fa; text-decoration: none; }
+.woz-box strong { color: #e2e8f0; }
+
+/* Savings note */
+.savings-note { font-size:0.75rem; color:#334155; margin-top:0.6rem; }
+
+/* Bottom WOZ link */
+.woz-footer-link a { color: #4f8ef7 !important; font-size:0.88rem; text-decoration:none; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -175,16 +343,12 @@ t = T[lang.lower()]
 
 # ─── Header ──────────────────────────────────────────────────────────────────
 st.markdown(f"## {t['title']}")
-st.markdown(t["subtitle"])
-st.markdown(t["intro"])
+st.markdown(f"<p style='color:#64748b;font-size:1.05rem;margin-top:-0.5rem;'>{t['subtitle'].replace('**','<strong>').replace('**','</strong>')}</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='color:#475569;font-size:0.9rem;'>{t['intro']}</p>", unsafe_allow_html=True)
 st.divider()
 
 # ─── WOZ explainer box ───────────────────────────────────────────────────────
-st.markdown(f"""
-<div style="background:#f0f9ff;border-left:4px solid #0ea5e9;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;font-size:0.92rem;color:#0c4a6e;">
-{t['woz_explainer']}
-</div>
-""", unsafe_allow_html=True)
+st.markdown(f'<div class="woz-box">{t["woz_explainer"]}</div>', unsafe_allow_html=True)
 
 # ─── Inputs ──────────────────────────────────────────────────────────────────
 col1, col2 = st.columns(2)
@@ -220,45 +384,42 @@ if st.button(t["button"], use_container_width=True, type="primary"):
     color_old = get_color(ltv_old)
     color_new = get_color(ltv_new)
 
-    st.markdown('<div class="result-box">', unsafe_allow_html=True)
+    st.markdown('<div class="result-card">', unsafe_allow_html=True)
 
     # NHG warning
-    st.markdown(t["nhg_warning"])
-    st.markdown("")
+    st.markdown(f'<div class="banner-nhg">{t["nhg_warning"]}</div>', unsafe_allow_html=True)
 
     # Banner
     if improved:
-        st.success(t["improved_msg"](ltv_old, ltv_new, best_value, which_value))
+        st.markdown(f'<div class="banner-good">{t["improved_msg"](ltv_old, ltv_new, best_value, which_value)}</div>', unsafe_allow_html=True)
     elif ltv_new < ltv_old:
-        st.info(t["same_tier_msg"](ltv_old, ltv_new))
+        st.markdown(f'<div class="banner-info">{t["same_tier_msg"](ltv_old, ltv_new)}</div>', unsafe_allow_html=True)
     else:
-        st.warning(t["no_change_msg"](ltv_new))
+        st.markdown(f'<div class="banner-warn">{t["no_change_msg"](ltv_new)}</div>', unsafe_allow_html=True)
 
-    # Side-by-side LTV
+    # Side-by-side LTV numbers
     ca, cb = st.columns(2)
     with ca:
         st.markdown(f"""
-        **{t['old_situation']}**<br>
-        <span class="ltv-badge {color_old}">{ltv_old:.1f}%</span><br>
-        <small>{LTV_RANGE_LABELS[old_idx]} — {t['tier_labels'][old_idx]}</small>
+        <div class="ltv-label">{t['old_situation']}</div>
+        <div class="ltv-number {color_old}">{ltv_old:.1f}%</div>
+        <div class="ltv-sublabel">{LTV_RANGE_LABELS[old_idx]} · {t['tier_labels'][old_idx]}</div>
         """, unsafe_allow_html=True)
     with cb:
         st.markdown(f"""
-        **{t['new_situation']}**<br>
-        <span class="ltv-badge {color_new}">{ltv_new:.1f}%</span><br>
-        <small>{LTV_RANGE_LABELS[new_idx]} — {t['tier_labels'][new_idx]}</small>
+        <div class="ltv-label">{t['new_situation']}</div>
+        <div class="ltv-number {color_new}">{ltv_new:.1f}%</div>
+        <div class="ltv-sublabel">{LTV_RANGE_LABELS[new_idx]} · {t['tier_labels'][new_idx]}</div>
         """, unsafe_allow_html=True)
 
-    st.markdown("<br>", unsafe_allow_html=True)
-
     # Tier table
-    st.markdown(f"**{t['tier_header']}**")
+    st.markdown(f'<div class="section-label">{t["tier_header"]}</div>', unsafe_allow_html=True)
     rows = ""
     for i, (threshold, range_label, tier_label) in enumerate(
             zip(LTV_THRESHOLDS, LTV_RANGE_LABELS, t["tier_labels"])):
-        hl     = "highlight" if i == new_idx else ""
+        hl     = "hl" if i == new_idx else ""
         marker = t["tier_you"] if i == new_idx else ""
-        rows  += f'<tr class="{hl}"><td>{range_label}</td><td>{tier_label}</td><td>{marker}</td></tr>'
+        rows  += f'<tr class="{hl}"><td>{range_label}</td><td>{tier_label}</td><td style="color:#34d399;font-size:0.8rem;">{marker}</td></tr>'
 
     st.markdown(f"""
     <table class="tier-table">
@@ -270,48 +431,53 @@ if st.button(t["button"], use_container_width=True, type="primary"):
     # ── Savings estimator ────────────────────────────────────────────────────
     if improved and mortgage_balance > 0:
         brackets_gained  = old_idx - new_idx
-        rate_reduction   = brackets_gained * 0.25          # ~0.25% per bracket
+        rate_reduction   = brackets_gained * 0.25
         monthly_saving   = (mortgage_balance * (rate_reduction / 100)) / 12
         yearly_saving    = monthly_saving * 12
 
-        st.markdown(f"<br><strong>{t['savings_header']}</strong>", unsafe_allow_html=True)
+        st.markdown(f'<div class="section-label">{t["savings_header"]}</div>', unsafe_allow_html=True)
         st.markdown(f"""
-        <div class="savings-box">
-            <div class="savings-row">
-                <span class="savings-label">{t['savings_rate_reduction']}</span>
-                <span class="savings-value">~{rate_reduction:.2f}%</span>
+        <div class="savings-grid">
+            <div class="savings-cell">
+                <div class="val">~{rate_reduction:.2f}%</div>
+                <div class="lbl">{t['savings_rate_reduction']}</div>
             </div>
-            <div class="savings-row">
-                <span class="savings-label">{t['savings_monthly']}</span>
-                <span class="savings-value">€ {monthly_saving:,.0f} {t['per_month']}</span>
+            <div class="savings-cell">
+                <div class="val">€{monthly_saving:,.0f}</div>
+                <div class="lbl">{t['savings_monthly']}</div>
             </div>
-            <div class="savings-row">
-                <span class="savings-label">{t['savings_yearly']}</span>
-                <span class="savings-value">€ {yearly_saving:,.0f} {t['per_year']}</span>
+            <div class="savings-cell">
+                <div class="val">€{yearly_saving:,.0f}</div>
+                <div class="lbl">{t['savings_yearly']}</div>
             </div>
         </div>
-        <p style="font-size:0.78rem;color:#6b7280;margin-top:0.5rem;">{t['savings_note']}</p>
+        <div class="savings-note">{t['savings_note']}</div>
         """, unsafe_allow_html=True)
 
     # ── Next steps ───────────────────────────────────────────────────────────
-    st.markdown(f"<br><strong>{t['steps_header']}</strong>", unsafe_allow_html=True)
+    st.markdown(f'<div class="section-label">{t["steps_header"]}</div>', unsafe_allow_html=True)
     if improved:
-        for icon, title, body in t["steps_improved"]:
+        for step_num, title, body in t["steps_improved"]:
             st.markdown(f"""
             <div class="step-card">
-                <div class="step-title">{icon} {title}</div>
-                <div class="step-body">{body}</div>
+                <div><span class="step-num">{step_num}</span></div>
+                <div>
+                    <div class="step-title">{title}</div>
+                    <div class="step-body">{body}</div>
+                </div>
             </div>
             """, unsafe_allow_html=True)
     else:
         st.markdown(f"""
-        <div class="tip-box">💡 {t['steps_no_improvement']}</div>
+        <div class="step-card">
+            <div class="step-body">{t['steps_no_improvement']}</div>
+        </div>
         """, unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
 
 # ─── WOZ link & footer ───────────────────────────────────────────────────────
 st.markdown("")
-st.markdown(f"[{t['woz_link']}](https://www.wozwaardeloket.nl)")
+st.markdown(f'<div class="woz-footer-link"><a href="https://www.wozwaardeloket.nl" target="_blank">{t["woz_link"]}</a></div>', unsafe_allow_html=True)
 st.divider()
 st.caption(t["footer"])
